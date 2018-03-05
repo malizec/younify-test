@@ -45,6 +45,8 @@ class ProductsAttributeUpdate extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // die($input);
+
         $storeId = $this->_storeManager->getStore()->getId();
 
         $output->writeln('<info>Importing Products...</info>');
@@ -60,29 +62,24 @@ class ProductsAttributeUpdate extends Command
         $productCollection->load();
 
         foreach ($productCollection as $product) {
-            // try{
-            //     // $productItem = $objectManager->create('Magento\Catalog\Model\Product')->load($product->getId()); 
-            //     // $product->setDelivery("YES"); //$value = 1 for yes and $value = 0 for No.
-            //     // $product->setVisibility(1);
-            //     // $product->getResource()->saveAttribute($product, 'delivery');
-            //     // $product->getResource()->saveAttribute($product, 'visibility');
-            //     // $product->save();            
-            //     // $output->writeln($product->getId() . ' UPDATED');
+            try{
+                // $productItem = $objectManager->create('Magento\Catalog\Model\Product')->load($product->getId()); 
+                // $product->setDelivery("YES"); //$value = 1 for yes and $value = 0 for No.
+                // $product->getResource()->saveAttribute($product, 'delivery');
+                // $product->getResource()->saveAttribute($product, 'visibility');
 
-            //     $product->setDelivery("YES");
-            //     $product->getResource()->saveAttribute($product, 'delivery');
-            //     $product->setData('delivery', 'YES')->getResource()->saveAttribute($product, 'delivery');
+                $product->setDelivery("NO");
+                $product->getResource()->saveAttribute($product, 'delivery');
+                $product->setData('delivery', 'NO')->getResource()->saveAttribute($product, 'delivery');
+                $product->save();            
 
-            // } catch(Exception $e){
-            //     $output->writeln($e->getMessage());
-            // }
+                $output->writeln($product->getId() . ' : ' . $product->getName() . ' UPDATED');
+
+            } catch(Exception $e){
+                $output->writeln($e->getMessage());
+            }
             
-            $output->writeln($product->getDelivery());
         }
-
-        $id = '1'; //product id
-        $this->action->updateAttributes([$id],['delivery' => 'YES'],$storeId);
-
 
     }
 

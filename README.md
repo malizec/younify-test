@@ -15,6 +15,7 @@ attribute values to YES or NO)
 
 --------------
 ## Instruction
+ClI Command folder is in <code>/app/code/Nenad/Tools</code>
 
 Create CLI Command in magento 2 for updating product attribut value for all products
 
