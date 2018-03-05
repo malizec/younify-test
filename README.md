@@ -14,7 +14,7 @@ respecting parameter value (parameter determins if it will set
 attribute values to YES or NO)
 
 --------------
-###Instruction:
+##Instruction:
 
 Create CLI Command in magento 2 for updating product attribut value for all products
 
